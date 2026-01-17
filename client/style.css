@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+#toolbar {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: #fff;
+  padding: 8px;
+  z-index: 10;
+}
+
+#usersPanel {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  padding: 8px;
+  z-index: 10;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#mainCanvas { z-index: 1; }
+#strokeCanvas { z-index: 2; pointer-events: none; }
+#cursorCanvas { z-index: 3; pointer-events: none; }
+
+button.active {
+  background: #4CAF50;
+  color: white;
+}

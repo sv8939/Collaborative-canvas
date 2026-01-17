@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Collaborative Canvas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    #toolbar {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #toolbar button.active {
+      background: #28a745;
+      color: white;
+    }
+
+    #usersPanel {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 10px;
+      border-radius: 8px;
+      min-width: 120px;
+      z-index: 1000;
+    }
+
+    #usersPanel h4 {
+      margin: 0 0 5px 0;
+      font-size: 14px;
+    }
+
+    #usersList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 12px;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== TOOLBAR ===== -->
+  <div id="toolbar">
+    <button id="brushBtn">Brush</button>
+    <button id="eraserBtn">Eraser</button>
+
+    <label>
+      Color
+      <input type="color" id="colorPicker" value="#000000" />
+    </label>
+
+    <label>
+      Width
+      <input type="range" id="strokeWidth" min="1" max="20" value="4" />
+    </label>
+
+    <button id="clearBtn">Clear</button>
+  </div>
+
+  <!-- ===== USERS ===== -->
+  <div id="usersPanel">
+    <h4>Online Users</h4>
+    <ul id="usersList"></ul>
+  </div>
+
+  <!-- ===== CANVAS LAYERS ===== -->
+  <canvas id="mainCanvas"></canvas>
+  <canvas id="strokeCanvas"></canvas>
+  <canvas id="cursorCanvas"></canvas>
+
+  <!-- ===== SCRIPTS (ORDER MATTERS) ===== -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="socket.js"></script>
+  <script src="canvas.js"></script>
+  <script src="tools.js"></script>
+  <script type="module" src="main.js"></script>
+
+
+</body>
+</html>
